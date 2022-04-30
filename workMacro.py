@@ -8,19 +8,37 @@ def Disposition():
     keyboard.read_key()
     if keyboard.read_key() == '-':
         # Dispositions as Answering Machine
+        pyautogui.moveTo(689, 315)
         print("Answering Machine")
-        pyautogui.moveTo(669, 331)
-        pyautogui.click()
+
+        pyautogui.doubleClick()
+
     elif keyboard.read_key() == '*':
         # Dispositions as No Answer
-        print("No Answer")
         pyautogui.moveTo(1026, 384)
-        pyautogui.click()
+        print("No Answer")
+
+        pyautogui.doubleClick()
+
     elif keyboard.read_key() == '/':
         # Dispositions as Disconnected
-        print("Disconnected")
         pyautogui.moveTo(722, 502)
-        pyautogui.click()
+        print("Disconnected")
+
+        pyautogui.doubleClick()
+    elif keyboard.read_key() == 'enter':
+        # Opens Call Back menu
+        pyautogui.moveTo(694, 425)
+        print("Call Back")
+
+        pyautogui.doubleClick()
+    elif keyboard.read_key() == 'insert':
+        # Dispositions as Busy
+        pyautogui.moveTo(619, 351)
+        print("Busy")
+
+        pyautogui.doubleClick()
+
     return
 
 
@@ -32,8 +50,6 @@ def HangUp():
 
     keyboard.wait('del')
     Disposition()
-
-    return
 
 
 def DialNext():
@@ -51,17 +67,16 @@ def main():
     loopTracker = True
 
     print("Spooling Up...")
-
+    print("\nPress + to Dial\nPress * to quit\n")
     while loopTracker:
-
-        print("\nPress + to Dial\nPress * to quit\n")
         keyboard.read_event()
+
         if keyboard.is_pressed('+'):
             DialNext()
         elif keyboard.is_pressed('*'):
             loopTracker = False
         else:
-            print("Invalid Operation")
+            print("\nPress + to Dial\nPress * to quit\n")
 
 
 if __name__ == "__main__":

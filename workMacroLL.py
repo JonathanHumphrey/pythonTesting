@@ -4,23 +4,42 @@ import keyboard
 
 
 def Disposition():
-    print("Select a Disposition for the call: \nAns. Mach. = '-'\nNo Answer = '*'\nDisconnected = '/'\n")
+    print("Select a Disposition for the call: \nAns. Mach. = 1\nNo Answer = 2\nDisconnected = 3\nCall Back = 4\nBusy = 5")
     keyboard.read_key()
-    if keyboard.read_key() == '-':
-        # Dispositions as Answering Machine
-        print("Answering Machine")
-        pyautogui.moveTo(669, 331)
-        pyautogui.click()
-    elif keyboard.read_key() == '*':
-        # Dispositions as No Answer
-        print("No Answer")
-        pyautogui.moveTo(1026, 384)
-        pyautogui.click()
-    elif keyboard.read_key() == '/':
-        # Dispositions as Disconnected
-        print("Disconnected")
-        pyautogui.moveTo(722, 502)
-        pyautogui.click()
+
+    invalid = True
+    while invalid:
+        if keyboard.read_key() == '1':
+            # Dispositions as Answering Machine
+            pyautogui.moveTo(689, 315)
+            print("Answering Machine")
+            pyautogui.doubleClick()
+            invalid = False
+        elif keyboard.read_key() == '2':
+            # Dispositions as No Answer
+            pyautogui.moveTo(1026, 384)
+            print("No Answer")
+            pyautogui.doubleClick()
+            invalid = False
+        elif keyboard.read_key() == '3':
+            # Dispositions as Disconnected
+            pyautogui.moveTo(722, 502)
+            print("Disconnected")
+            pyautogui.doubleClick()
+            invalid = False
+        elif keyboard.read_key == '4':
+            pyautogui.moveTo(694, 425)
+            print("Call Back")
+            pyautogui.doubleClick()
+            invalid = False
+        elif keyboard.read_key == '5':
+            pyautogui.moveTo(619, 351)
+            print("Busy")
+            pyautogui.doubleClick()
+            invalid = False
+        else:
+            print(
+                "Enter a valid number: \nAns. Mach. = 1\nNo Answer = 2\nDisconnected = 3\nCall Back = 4\nBusy = 5")
     return
 
 
